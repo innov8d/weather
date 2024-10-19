@@ -1,0 +1,7 @@
+<div>
+  <%= form_with url: '/', method: :post do |form| %>
+    <%= form.label :forecast, 'Enter street address:' %>
+    <%= form.text_field :forecast %>
+    <%= form.submit 'Get Forecast'%>
+  <% end %>
+</div>
