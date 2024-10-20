@@ -16,6 +16,6 @@ class LocationStorage
     raise RuntimeError, 'No info for that address' unless response['addresses'].length > 0
 
     location = response['addresses'].first
-    {latitude: location['latitude'], longitude: location['longitude']}
+    {latitude: location['latitude'], longitude: location['longitude'], postalCode: location['postalCode']}
   end
 end

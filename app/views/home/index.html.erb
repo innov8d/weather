@@ -1,7 +1,11 @@
-<div>
-  <%= form_with url: '/', method: :post do |form| %>
-    <%= form.label :forecast, 'Enter street address:' %>
-    <%= form.text_field :forecast %>
-    <%= form.submit 'Get Forecast'%>
-  <% end %>
+<div class='flex flex-row w-full'>
+    <div class='w-1/3'>
+      <%= form_with url: '/forecast', method: :post do |form| %>
+        <%= form.label :forecast, 'Enter street address:' %>
+        <%= form.text_field :forecast, class: 'w-full' %>
+        <%= form.submit 'Get Forecast', class: 'btn-primary'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
