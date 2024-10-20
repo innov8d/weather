@@ -24,10 +24,10 @@ class WeatherStorage
 
   def convert_forecast(forecast)
     {
-      time: forecast['time'], 
+      time: Date.parse(forecast['time']).to_fs(:long), 
       temperatureMax: forecast['values']['temperatureMax'],
       temperatureMin: forecast['values']['temperatureMin'],
-      weatherCode: forecast['values']['weatherCodeMax']
+      weatherCode: forecast['values']['weatherCodeMax']*10
     }
   end
 end

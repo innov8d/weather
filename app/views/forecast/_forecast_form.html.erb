@@ -1,0 +1,6 @@
+<%= form_with url: '/forecast', method: :post do |form| %>
+  <%= form.text_field :address, class: 'w-2/3', placeholder: 'Enter street address' %>
+  <%= form.submit 'Get Forecast', class: 'btn-primary mt-10px'%>
+<% end %>
+<img src=<%= image_path("Powered_by_Tomorrow-Black.png") %> class="mt-10">
+
