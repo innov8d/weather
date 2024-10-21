@@ -58,7 +58,13 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'dotenv-rails', :groups => [:development, :test]
+group :development, :test do
+  gem 'dotenv-rails'
+end
 
+group :development, :test do
+  gem 'rspec-rails'
+end
 
+gem 'factory_bot_rails'
 gem "tailwindcss-rails", "~> 3.0"
