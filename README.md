@@ -48,14 +48,6 @@ it was more important to cache the calls to Tomorrow.
 
 * Class decomposition
 
-HomeController 
-|
-V 
-ForecastController -> LocationStorageService
-|
-V 
-ForecastService                                         
-
 The most significant example of decomposition in this project is splitting the ForecastService into 
 two additional classes that each perform a single action. For the LocationStorage service, it take an 
 address and returns lat/long. For the WeatherStorageService, it take a lat/long and returns a 6 day 
