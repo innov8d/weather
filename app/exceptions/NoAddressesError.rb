@@ -1,0 +1,2 @@
+class NoAddressesError < StandardError
+end

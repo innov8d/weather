@@ -6,6 +6,14 @@ class WeatherStorage
     raise ArgumentError, 'you must supply a latitude' if latitude.blank?
     raise ArgumentError, 'you must supply a longitude' if longitude.blank?
 
+    forecast = get_forecast(latitude, longitude)
+
+    forecast&.[]('timelines')&.[]('daily')&.map { |forecast| convert_forecast(forecast) } || []
+  end
+
+  private
+
+  def get_forecast(latitude, longitude)
     query = {
       apikey: ENV['TOMORROW_KEY'], 
       location: "#{latitude},#{longitude}",
@@ -16,11 +24,7 @@ class WeatherStorage
     }
 
     forecast = self.class.get('/forecast', { query: query })
-
-    forecast['timelines']['daily'].map { |forecast| convert_forecast(forecast) }
   end
-
-  private
 
   def convert_forecast(forecast)
     {

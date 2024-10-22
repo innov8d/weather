@@ -9,13 +9,17 @@ class LocationStorage
   def addressToCoords(address)
     raise ArgumentError, 'you must search for something' if address.blank?
 
-    @options = { query: { query: address }}
-    response = self.class.get("/forward", @options)
+    response = get_location(address)
 
-    raise RuntimeError, 'No info for that address' unless response.key?('addresses')
-    raise RuntimeError, 'No info for that address' unless response['addresses'].length > 0
+    raise NoAddressesError, 'No info for that address' unless response.key?('addresses')
+    raise NoAddressesError, 'No info for that address' unless response['addresses'].length > 0
 
     location = response['addresses'].first
-    {latitude: location['latitude'], longitude: location['longitude'], postalCode: location['postalCode']}
+    {latitude: location['latitude'].round(3), longitude: location['longitude'].round(3), postalCode: location['postalCode']}
+  end
+
+  def get_location(address)
+    @options = { query: { query: address }}
+    self.class.get("/forward", @options)
   end
 end
