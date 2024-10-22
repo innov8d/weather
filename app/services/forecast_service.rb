@@ -1,4 +1,8 @@
 class ForecastService
+  
+  # Calls location storage to get the latitude and longitude
+  # Then it calls weather storage for the latitude and longitude
+  # Caches forcast data for 30 mins to reduce load on the weather services
   def get_forecast(address)
     location_storage = LocationStorage.new
     coords = location_storage.addressToCoords(address)

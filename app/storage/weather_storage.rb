@@ -2,6 +2,8 @@ class WeatherStorage
   include HTTParty
   base_uri 'https://api.tomorrow.io/v4/weather/'
 
+  # Calls Tomorrow.io for the given latitude and longitude
+  # returns an array of: {time, temperatireMax, temperatureMin, WeatherCode}
   def weatherForCoords(latitude, longitude)
     raise ArgumentError, 'you must supply a latitude' if latitude.blank?
     raise ArgumentError, 'you must supply a longitude' if longitude.blank?

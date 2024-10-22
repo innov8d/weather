@@ -6,6 +6,8 @@ class LocationStorage
     self.class.headers 'Authorization' => ENV['RADAR_KEY']
   end
 
+  # Gets the latitude and longitude for a supplied address.
+  # Returns an object {latitude, longitude, postalCode}
   def addressToCoords(address)
     raise ArgumentError, 'you must search for something' if address.blank?
 
